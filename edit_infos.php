@@ -5,7 +5,7 @@ include('config.php');
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="Semantic/Semantic/dist/semantic.css" media="screen" />
+		<link rel="stylesheet" href="Semantic-UI-master/dist/semantic.css" media="screen" />
         <link href="style.css" rel="stylesheet" title="Style" />
 		<link rel="icon" type="default/images/png" href="images/cloudicon.jpe">
         <title>Edit my personnal informations</title>
@@ -14,7 +14,7 @@ include('config.php');
     	<div class="header">
         	<a href="<?php echo $url_home; ?>"><img src="images/safehaven.jpe" alt="Members Area" /></a>
 			<?php
-if(isset($_SESSION['username'])){echo ''.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');
+if(isset($_SESSION['username'])){;
 //We display the links
 ?>
 <nav class="ui fluid five item red menu">

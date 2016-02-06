@@ -5,7 +5,7 @@ include('config.php')
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link rel="stylesheet" href="Semantic/Semantic/dist/semantic.css" media="screen" />
+        <link rel="stylesheet" href="Semantic-UI-master/dist/semantic.css" media="screen" />
         <link href="style.css" rel="stylesheet" title="Style" />
 		<link rel="icon" type="default/images/png" href="images/cloudicon.jpe">
         <title>Home</title>
@@ -18,7 +18,7 @@ include('config.php')
 <?php
 //We display a welcome message, if the user is logged, we display it username
 ?>
-<?php if(isset($_SESSION['username'])){echo ' '.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');} ?>,<br />
+<?php if(isset($_SESSION['username'])) ?> <br />
 
 <?php
 $key=sha1('Australia');

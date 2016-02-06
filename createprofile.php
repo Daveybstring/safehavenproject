@@ -5,21 +5,22 @@ include('config.php')
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link rel="stylesheet" href="Semantic/Semantic/dist/semantic.css" media="screen" />
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <link rel="stylesheet" href="Semantic-UI-master/dist/semantic.css" media="screen" />
         <link href="style.css" rel="stylesheet" title="Style" />
 		<link rel="icon" type="default/images/png" href="images/cloudicon.jpe">
+		<script type="text/javascript" src="Semantic-UI-master/dist/semantic.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		
+		
         <title>profile</title>
+		
     </head>
     <body>
     	<div class="header">
         	<a href="<?php echo $url_home; ?>"><img src="images/safehaven.jpe" alt="Members Area" /></a>
 	    
-      
-<?php
-//We display a welcome message, if the user is logged, we display it username
-?>
-<?php if(isset($_SESSION['username'])){echo ' '.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');} ?>,<br />
-
+     
 <?php
 $key=sha1('Australia');
 
@@ -39,6 +40,7 @@ if(isset($_SESSION['username']))
 
 ?>
 </div>
+
 <div id="header">
 <nav class="ui fluid five item red menu">
 				<a class=" item" href="index.php"> <i
@@ -57,48 +59,10 @@ if(isset($_SESSION['username']))
 			</div>
 				
 <?php
-//We get the IDs, usernames and emails of users display user profile
-$req = mysql_query('select id, username, firstname,email,avatar,quote,about from users where username ="'.$_SESSION['username'].'"');
-while($dnn = mysql_fetch_array($req))
-{
+
+	
 ?>
-					<div id="Section1">
-			<div class="ui stacked inverted segment">
 
-	<h1><b><?php echo htmlentities($dnn['username']); ?></b></h1>
-
-<table style="width:500px;">
-	<tr>
-    	<td><?php
-if($dnn['avatar']!='')
-{
-	echo '<img src="'.htmlentities($dnn['avatar']).'" alt="Avatar" style="max-width:100px;max-height:100px;" />';
-}
-else
-{
-	echo '<img src="images/user.png" alt="Avatar" style="max-width:100px;max-height:100px;" />';
-}
-?></td>
-
-
-    	<td class="left"><h1><?php echo htmlentities($dnn['username'], ENT_quoteS, 'UTF-8')?></h1>
-    		<h2>FirstName:</h2><?php echo '<h1>' .decrypt($dnn['firstname'],$key).'</h1>';?>
-    	<h2>Email:</h2><?php echo '</h1>' .decrypt($dnn['email'],$key). '</h1>'; ?><br />
-		  <h2>Quote:</h2><?php echo '</h1>' .decrypt($dnn['quote'],$key). '</h1>'; ?>
-	<br/>
-    <h2>About:</h2> <?php echo '</h1>' .decrypt($dnn['about'],$key). '</h1>'; ?><br/>
-	<br/>
-       <h2>This user joined the website on </h2><?php echo date('Y/m/d',$dnn['signup_date']); ?>
-		<br/>
-		</td>
-		<tr>
-		    </tr>
-</table>
-</div>
-		</div>
-<?php
-}
-?>				
 <?php
 }
 else
@@ -117,12 +81,10 @@ else
 				</nav>
 				</div>
 				
-				<div id="Section1">
-			
-		</div>			
 <?php
 }
 ?>
+
 
 	</body>
 </html>

@@ -12,6 +12,10 @@ body  /* Body of Website */
     margin:auto;
 	
 }
+.error{
+				color: black;
+				visibility: hidden;
+				}
 h2{
 color:#E18484;
 font-family: "Trebuchet MS", Helvetica, sans-serif;

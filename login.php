@@ -5,7 +5,7 @@ include('config.php');
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="Semantic/Semantic/dist/semantic.css" media="screen" />
+        <link rel="stylesheet" href="Semantic-UI-master/dist/semantic.css" media="screen" />
         <link href="style.css" rel="stylesheet" title="Style" />
 		<link rel="icon" type="default/images/png" href="images/cloudicon.jpe">
         <title>Login</title>
