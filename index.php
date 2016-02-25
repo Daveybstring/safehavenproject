@@ -58,7 +58,7 @@ if(isset($_SESSION['username']))
 				
 <?php
 //We get the IDs, usernames and emails of users display user profile
-$req = mysql_query('select id, username, firstname,email,avatar,quote,about from users where username ="'.$_SESSION['username'].'"');
+$req = mysql_query('select id, username, firstname,email,avatar from users where username ="'.$_SESSION['username'].'"');
 while($dnn = mysql_fetch_array($req))
 {
 ?>
@@ -84,9 +84,7 @@ else
     	<td class="left"><h1><?php echo htmlentities($dnn['username'], ENT_quoteS, 'UTF-8')?></h1>
     		<h2>FirstName:</h2><?php echo '<h1>' .decrypt($dnn['firstname'],$key).'</h1>';?>
     	<h2>Email:</h2><?php echo '</h1>' .decrypt($dnn['email'],$key). '</h1>'; ?><br />
-		  <h2>Quote:</h2><?php echo '</h1>' .decrypt($dnn['quote'],$key). '</h1>'; ?>
-	<br/>
-    <h2>About:</h2> <?php echo '</h1>' .decrypt($dnn['about'],$key). '</h1>'; ?><br/>
+		  
 	<br/>
        <h2>This user joined the website on </h2><?php echo date('Y/m/d',$dnn['signup_date']); ?>
 		<br/>

@@ -62,7 +62,7 @@ if(isset($_SESSION['username']))
 
 {
 	//We check if the form has been sent
-	if(isset($_POST['username'], $_POST['password'], $_POST['passverif'], $_POST['avatar'],$_POST['quote'],$_POST['about']))
+	if(isset($_POST['username'], $_POST['password'], $_POST['passverif']))
 	{
 		//We remove slashes depending on the configuration
 		if(get_magic_quotes_gpc())
@@ -70,9 +70,7 @@ if(isset($_SESSION['username']))
 			$_POST['username'] = stripslashes($_POST['username']);
 			$_POST['password'] = stripslashes($_POST['password']);
 			$_POST['passverif'] = stripslashes($_POST['passverif']);
-			$_POST['avatar'] = stripslashes($_POST['avatar']);
-			$_POST['quote'] = stripslashes($_POST['quote']);
-			$_POST['about'] = stripslashes($_POST['about']);
+			
 		}
 		//We check if the two passwords are identical
 		if($_POST['password']==$_POST['passverif'])
@@ -93,19 +91,16 @@ if(isset($_SESSION['username']))
 				//As you can see, we first hashed the password using double hashing algorithm (md5 and sha1) and created salt value.
 				// After that, we combined real password with generated salt value and hashed it again with md5. 
 				//The advantage is that this way alt value is random and it changes, making it nearly impossible to break. 
-				//I mean, if you can wait for a million years and have a super computer on your hands, try to break it.
+				
 				$salt = sha1(md5($password));
 				$password = md5($password.$salt);
-					$avatar = mysql_real_escape_string($_POST['avatar']);
-					$quote = mysql_real_escape_string($_POST['quote']);
-					$about = mysql_real_escape_string($_POST['about']);
 					//We check if there is no other user using the same username
 					$dn = mysql_fetch_array(mysql_query('select count(*) as nb from users where username="'.$username.'"'));
 					//We check if the username changed and if it is available
 					if($dn['nb']==0 or $_POST['username']==$_SESSION['username'])
 					{
 						//We edit the user informations
-						if(mysql_query('update users set username="'.$username.'", password="'.$password.'", avatar="'.$avatar.'" , 
+						if(mysql_query('update users set username="'.$username.'", password="'.$password.'", 
 							quote="'.encrypt($quote,$key).'", about="'.encrypt($about,$key).'" where id="'.mysql_real_escape_string($_SESSION['userid']).'"'))
 						{
 							//We dont display the form
@@ -168,35 +163,34 @@ if(isset($_SESSION['username']))
 			{
 				$password = '';
 			}
-			$avatar = htmlentities($_POST['avatar'], ENT_quoteS, 'UTF-8');
-			$quote = htmlentities($_POST['quote'], ENT_quoteS, 'charset=iso-8859-1');
-			$about = htmlentities($_POST['about'], ENT_quoteS, 'charset=iso-8859-1');
+			
 		}
 		else
 		{
 			//otherwise, we display the values of the database
-			$dnn = mysql_fetch_array(mysql_query('select username,password,avatar,about,quote from users where username="'.$_SESSION['username'].'"'));
+			$dnn = mysql_fetch_array(mysql_query('select username,password, from users where username="'.$_SESSION['username'].'"'));
 			$username = htmlentities($dnn['username'], ENT_quoteS, 'UTF-8');
 			$password = htmlentities($dnn['password'], ENT_quoteS, 'UTF-8');
-			$avatar = htmlentities($dnn['avatar'], ENT_quoteS, 'UTF-8');
-			$quote = htmlentities($dnn['quote'], ENT_quoteS, 'charset=iso-8859-1');
-			$about = htmlentities($dnn['about'], ENT_quoteS, 'charset=iso-8859-1');
+			
 		}
 		//We display the form
 ?>
-<div class="content">
+
+<div id="Sectionreg">
+			<div class="ui stacked black segment">
+		<div class="ui black form">
+  <div class="one field">
+  	 <div class="field">
     <form action="edit_infos.php" method="post">
-        You can edit your informations:<br />
+        You can edit your user details:<br />
         <div class="center">
-            <label for="username">Username</label><input type="text" name="username" id="username" value="<?php echo $username; ?>" /><br />
-            <label for="password">Password1<span class="small"></span></label><input type="password" name="password" id="password" value="<?php echo $password; ?>" /><br />
-            <label for="passverif">Password2<span class="small"></span></label><input type="password" name="passverif" id="passverif" value="<?php echo $password; ?>" /><br />
-            <label for="avatar">Avatar<span class="small"></span></label><input type="text" name="avatar" id="avatar" value="<?php echo $avatar; ?>" /><br />
-			<label for="quote">quote</label><input type="text" name="quote" text id="quote" value="<?php echo $quote; ?>" /><br />
-			<label for="about">about</label><input type="text" name="about" text id="about" value="<?php echo $about; ?>" /><br />
-            <input type="submit" value="Send" />
+            <input type="text" placeholder="Username" name="username" id="username" value="<?php echo $username; ?>" /><br />
+            <br /><input type="password" placeholder="Password" name="password" id="password" value="<?php echo $password; ?>" /><br />
+            <br /><input type="password" placeholder="Verify Password" name="passverif" id="passverif" value="<?php echo $password; ?>" /><br />
+            <br /><input type="submit" value="Send" class="ui submit button" />
         </div>
     </form>
+</div>
 </div>
 </div>
 <?php

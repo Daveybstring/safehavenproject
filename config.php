@@ -10,7 +10,7 @@ can work correctly.
 
 //We log to the DataBase
 mysql_connect('localhost','root','');
-mysql_select_db('supnetau_Sup');
+mysql_select_db('SafeHaven');
 
 
 /******************************************************
