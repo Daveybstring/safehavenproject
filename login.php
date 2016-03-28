@@ -134,7 +134,7 @@ else
 			<div class="ui stacked black segment">
 		<div class="ui black form">
 
-    <form action="connexion.php" method="post">
+    <form action="login.php" method="post">
         Enter your login info below<br />
       <div class="one field">
   	 <div class="field">

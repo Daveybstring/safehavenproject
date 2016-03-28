@@ -9,7 +9,5 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `email` varbinary(255) NOT NULL,
   `avatar` text NOT NULL,
-  `quote` varchar(500) NOT NULL,
-  `about` varchar(500) NOT NULL,
   `signup_date` int(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

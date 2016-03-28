@@ -66,7 +66,7 @@ if(isset($_GET['id']))
 {
 	$id = intval($_GET['id']);
 	//We check if the user exists
-	$dn = mysql_query('select username,firstname,password,email, avatar, quote, about, signup_date from users where id="'.$id.'"');
+	$dn = mysql_query('select username,firstname,password,email, avatar, signup_date from users where id="'.$id.'"');
 	if(mysql_num_rows($dn)>0) 
 	{
 		$dnn = mysql_fetch_array($dn);
@@ -77,7 +77,7 @@ if(isset($_GET['id']))
 			<div class="ui stacked inverted segment">
 			
 	<?php
-//We add a link to send a pm to the user
+//We add a link to send agent to user
 if(isset($_SESSION['username']))
 {
 ?>
@@ -150,7 +150,7 @@ else
 
 <div id="footer">
 			<div class="ui center aligned red segment">
-				<a class="ui red button" href="https://www.sup.tf/index.php">Home</a>
+				<a class="ui red button">Home</a>
 			</div>
 		</div>
 	</body>

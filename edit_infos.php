@@ -17,7 +17,7 @@ include('config.php');
 if(isset($_SESSION['username'])){;
 //We display the links
 ?>
-<nav class="ui fluid five item red menu">
+<nav class="ui fluid six item red menu">
 				<a class=" item" href="index.php"> <i
 					class="home icon"></i> Home
 				</a> <a class="active red item" href="edit_infos.php"> <i class="book icon"></i>
@@ -26,6 +26,9 @@ if(isset($_SESSION['username'])){;
 					Create Profiles
 				</a><a class=" item" href="reports.php"> <i class="book icon"></i>
 					Reports
+				</a>
+				<a class=" item" href="download.php"> <i class="lock icon"></i>
+					Download safehaven
 				</a>
 				<a class=" item" href="login.php"> <i class="bookmark icon"></i>
 					Logout
